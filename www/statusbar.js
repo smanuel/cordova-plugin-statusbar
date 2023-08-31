@@ -57,6 +57,10 @@ var StatusBar = {
         exec(null, null, 'StatusBar', 'styleLightContent', []);
     },
 
+    backgroundColorByDefault: function () {
+        exec(null, null, 'StatusBar', 'backgroundColorByDefault', []);
+    },
+
     backgroundColorByName: function (colorname) {
         return StatusBar.backgroundColorByHexString(namedColors[colorname]);
     },

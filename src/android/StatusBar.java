@@ -44,6 +44,7 @@ public class StatusBar extends CordovaPlugin {
     private static final String ACTION_HIDE = "hide";
     private static final String ACTION_SHOW = "show";
     private static final String ACTION_READY = "_ready";
+    private static final String ACTION_BACKGROUND_COLOR_BY_DEFAULT = "backgroundColorByDefault";
     private static final String ACTION_BACKGROUND_COLOR_BY_HEX_STRING = "backgroundColorByHexString";
     private static final String ACTION_OVERLAYS_WEB_VIEW = "overlaysWebView";
     private static final String ACTION_STYLE_DEFAULT = "styleDefault";
@@ -131,6 +132,12 @@ public class StatusBar extends CordovaPlugin {
                     // CB-11197 We still need to update LayoutParams to force status bar
                     // to be hidden when entering e.g. text fields
                     window.addFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN);
+                });
+                return true;
+
+            case ACTION_BACKGROUND_COLOR_BY_DEFAULT:
+                activity.runOnUiThread(() -> {
+                    setStatusBarBackgroundColor(preferences.getString("StatusBarBackgroundColor", "#000000"));
                 });
                 return true;
 
